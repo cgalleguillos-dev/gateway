@@ -4,7 +4,6 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloGatewayDriver, ApolloGatewayDriverConfig } from '@nestjs/apollo';
-
 @Module({
   imports: [
     GraphQLModule.forRoot<ApolloGatewayDriverConfig>({
@@ -13,7 +12,8 @@ import { ApolloGatewayDriver, ApolloGatewayDriverConfig } from '@nestjs/apollo';
         supergraphSdl: new IntrospectAndCompose({
           subgraphs: [
             {
-              name: 'users', url: 'http://localhost:3001/graphql'
+              name: 'user',
+              url: 'http://localhost:3001/graphql'
             }
           ]
         })
