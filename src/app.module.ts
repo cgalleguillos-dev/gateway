@@ -14,6 +14,10 @@ import { ApolloGatewayDriver, ApolloGatewayDriverConfig } from '@nestjs/apollo';
             {
               name: 'user',
               url: 'http://localhost:3001/graphql'
+            },
+            {
+              name: 'movies',
+              url: 'http://localhost:3002/graphql'
             }
           ]
         })
