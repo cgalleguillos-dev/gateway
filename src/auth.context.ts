@@ -2,13 +2,8 @@ import { UnauthorizedException } from "@nestjs/common";
 import * as jwt from 'jsonwebtoken';
 
 export const authContext = async ({ req }) => {
-
-    //verifica que no vaya a la ruta de login
-    if (req.body.operationName === 'login') return;
-    if (req.body.operationName === 'signup') return;
-    if (req.body.operationName === 'GetMovies') return;
-    if (req.body.operationName === 'getMovieByID') return;
-    console.log(req.body.operationName);
+    const publicRoutes = ['login', 'signup', 'GetMovies', 'getMovieByID'];
+    if (publicRoutes.includes(req.body.operationName)) return;
     const token = req.headers.authorization || '';
     if (!token) throw new UnauthorizedException();
     const newToken = token.replace('Bearer ', '');
